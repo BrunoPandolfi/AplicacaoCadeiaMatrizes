@@ -44,6 +44,28 @@ public class ProdutoCadeiaMatrizes
             }
         }
     }
+    
+     public int matrix_chain_order_rec(int p[], int i, int j)
+    {
+        
+        if (i == j)
+            return 0;
+ 
+        int min = Integer.MAX_VALUE;
+ 
+        for (int k=i; k<j; k++)
+        {
+            int count = matrix_chain_order_rec(p, i, k) +
+                        matrix_chain_order_rec(p, k+1, j) +
+                        p[i-1]*p[k]*p[j];
+ 
+            if (count < min)
+                min = count;
+        }
+ 
+        // Return minimum count
+        return min;
+    }
 
     public String print_optimal_parens(int i, int j)
     {
