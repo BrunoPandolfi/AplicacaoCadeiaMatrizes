@@ -10,7 +10,7 @@ import java.util.Map;
 
 /**
  *
- * @author Akiro
+ * @authors Bruno Pandolfi, Lorenzo Vescovi e Tiago Giuliatte
  */
 
 
@@ -44,34 +44,6 @@ public class ProdutoCadeiaMatrizes
             }
         }
     }
-    
-    
-    public int matrix_Chain_Order_Rec(int p[], int i, int j)
-    {
-        
-        if (i == j)
-            return 0;
- 
-        int min = Integer.MAX_VALUE;
- 
-        // place parenthesis at different places between first
-        // and last matrix, recursively calculate count of
-        // multiplications for each parenthesis placement and
-        // return the minimum count
-        for (int k=i; k<j; k++)
-        {
-            int count = matrix_Chain_Order_Rec(p, i, k) +
-                        matrix_Chain_Order_Rec(p, k+1, j) +
-                        p[i-1]*p[k]*p[j];
- 
-            if (count < min)
-                min = count;
-        }
- 
-        // Return minimum count
-        return min;
-    }
-
 
     public String print_optimal_parens(int i, int j)
     {
@@ -88,5 +60,41 @@ public class ProdutoCadeiaMatrizes
     private String getChave(int i, int j)
     {
         return String.valueOf(i)+","+String.valueOf(j);
+    }
+    
+    public void imprimirTabelaCustos (int p[])
+    {
+        StringBuilder tabela = new StringBuilder();
+        int n = p.length - 1;
+        for (int i = 1; i < n+1; i++)
+        {
+            int j = 1;
+            while (i != j)
+            {
+                tabela.append(m.get(getChave(j,i))).append("\t");
+                j++;
+            }
+            tabela.append(m.get(getChave(j,i))).append("\n");
+        }
+        System.out.println("\nTabela de Operações Ótimas:\n");
+        System.out.println(tabela.toString());
+    }
+    
+    public void imprimirTabelaSequenciaOtima (int p[])
+    {
+        StringBuilder tabela = new StringBuilder();
+        int n = p.length - 1;
+        for (int i = 1; i < n+1; i++)
+        {
+            int j = 1;
+            while (i != j)
+            {
+                tabela.append(s.get(getChave(j,i))).append("\t");
+                j++;
+            }
+            tabela.append("\n");
+        }
+        System.out.println("\nTabela de Sequencia Ótima:");
+        System.out.println(tabela.toString());
     }
 }
