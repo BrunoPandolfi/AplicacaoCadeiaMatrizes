@@ -7,7 +7,7 @@ package MultiplicacaoCadeiaMatrizes;
 
 /**
  *
- * @author Bruno Pandolfi
+ * @authors Bruno Pandolfi, Lorenzo Vescovi e Tiago Giuliatte
  */
 public class ProdutoMatrizes {
     

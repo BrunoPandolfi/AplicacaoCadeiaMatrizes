@@ -47,7 +47,6 @@ public class ProdutoCadeiaMatrizes
     
      public int matrix_chain_order_rec(int p[], int i, int j)
     {
-        
         if (i == j)
             return 0;
  
@@ -118,5 +117,17 @@ public class ProdutoCadeiaMatrizes
         }
         System.out.println("\nTabela de Sequencia Ótima:");
         System.out.println(tabela.toString());
+    }
+    
+    public void imprimirMelhorCusto (int p[])
+    {
+        System.out.print("Melhor custo de multiplicação da matriz A" + 1 + " a " + " A" + (p.length - 1));
+        System.out.println(": " + m.get(getChave(1,p.length - 1)) + "\n");
+    }
+    
+    public void imprimirMelhorCustoRec (int p[])
+    {
+        System.out.print("Melhor custo de multiplicação da matriz A" + 1 + " a " + " A" + (p.length - 1) + (" (Método Recursivo)"));
+        System.out.println(": " + this.matrix_chain_order_rec(p, 1, p.length -1) + "\n");
     }
 }
